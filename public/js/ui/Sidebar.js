@@ -18,7 +18,16 @@ class Sidebar {
    * при нажатии на кнопку .sidebar-toggle
    * */
   static initToggleButton() {
-
+    document.querySelector('.sidebar-toggle').addEventListener('click', () => {
+      if (document.querySelector('.sidebar-mini').classList.contains('sidebar-open')) {
+        document.querySelector('.sidebar-mini').classList.remove('sidebar-open');
+        document.querySelector('.sidebar-mini').classList.remove('sidebar-collapse');
+      } else {
+        document.querySelector('.sidebar-mini').classList.add('sidebar-open');
+        document.querySelector('.sidebar-mini').classList.add('sidebar-collapse');
+      }
+      
+    })
   }
 
   /**
@@ -29,6 +38,10 @@ class Sidebar {
    * выходу устанавливает App.setState( 'init' )
    * */
   static initAuthLinks() {
-
+    document.querySelector('.menu-item_register').addEventListener('click', () => {
+      console.log('hi');
+      const modal_item = App.getModal('#modal-register');
+      Modal.open('modal_item');  // выдает ошибку: Modal.open is not a function
+    })
   }
 }
