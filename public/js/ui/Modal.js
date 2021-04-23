@@ -12,13 +12,11 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
-    if (element === '') {
+    if (!element) {
       throw new Error('Передан пустой элемент')
-    } else {
+    } 
       this.element = element;
       this.registerEvents();
-    }
-
   }
 
   /**
@@ -47,12 +45,12 @@ class Modal {
    * со значением «block»
    * */
   open() {
-    this.element.display = 'block';
+    this.element.style.display = 'block';
   }
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close(){
-    this.element.display = '';
+    this.element.style.display = '';
   }
 }

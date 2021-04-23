@@ -19,14 +19,8 @@ class Sidebar {
    * */
   static initToggleButton() {
     document.querySelector('.sidebar-toggle').addEventListener('click', () => {
-      if (document.querySelector('.sidebar-mini').classList.contains('sidebar-open')) {
-        document.querySelector('.sidebar-mini').classList.remove('sidebar-open');
-        document.querySelector('.sidebar-mini').classList.remove('sidebar-collapse');
-      } else {
-        document.querySelector('.sidebar-mini').classList.add('sidebar-open');
-        document.querySelector('.sidebar-mini').classList.add('sidebar-collapse');
-      }
-      
+      document.querySelector('.sidebar-mini').classList.toggle('sidebar-open');
+      document.querySelector('.sidebar-mini').classList.toggle('sidebar-collapse');
     })
   }
 
@@ -39,9 +33,16 @@ class Sidebar {
    * */
   static initAuthLinks() {
     document.querySelector('.menu-item_register').addEventListener('click', () => {
-      console.log('hi');
-      const modal_item = App.getModal('#modal-register');
-      Modal.open('modal_item');  // выдает ошибку: Modal.open is not a function
-    })
+      App.getModal('register').open();
+    });
+    document.querySelector('.menu-item_login').addEventListener('click', () => {
+      App.getModal('login').open();
+    });
+    document.querySelector('.menu-item_logout').addEventListener('click', () => {
+      User.logout();
+      if (response.success = true) {
+        App.setState( 'init' );
+      }
+    });
   }
 }
